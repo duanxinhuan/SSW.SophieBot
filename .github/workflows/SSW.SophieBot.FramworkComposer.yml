@@ -60,6 +60,7 @@ jobs:
         shell: pwsh
         run: |
           $generatedDirectory = "$($ENV.SourceDir)/generated"
+          echo "generated dir is ${generatedDirectory}"
           
           # Clean and recreate the generated directory
           if (Test-Path ${generatedDirectory})
