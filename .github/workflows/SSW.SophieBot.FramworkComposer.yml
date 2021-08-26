@@ -58,10 +58,9 @@ jobs:
     steps:
       - name: Prepare working folders
         shell: pwsh
-        working-directory: src/SSW.SophieBot/SSWSophieBot
         env:
-          generatedDirectory: generated
-          outputDirectory: generated/interruption
+          generatedDirectory: src/SSW.SophieBot/SSWSophieBot/generated
+          outputDirectory: src/SSW.SophieBot/SSWSophieBot/generated/interruption
         run: |
           echo "generated dir is ${env:generatedDirectory}"
           echo "outputDirectory dir is ${env:outputDirectory}"
