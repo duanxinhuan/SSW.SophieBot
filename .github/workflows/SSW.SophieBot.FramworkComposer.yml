@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: Prepare working folders
         shell: pwsh
-        working-directory: ${{env.SourceDir}}
+        working-directory: src/SSW.SophieBot/SSWSophieBot
         env:
           generatedDirectory: generated
           outputDirectory: generated/interruption
