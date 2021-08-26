@@ -59,7 +59,7 @@ jobs:
       - name: Prepare working folders
         shell: pwsh
         run: |
-          $generatedDirectory = "$($ENV:SourceDir)/generated"
+          $generatedDirectory = "$($ENV.SourceDir)/generated"
           
           # Clean and recreate the generated directory
           if (Test-Path ${generatedDirectory})
@@ -67,14 +67,14 @@ jobs:
             Remove-Item -Path ${generatedDirectory} -Force -Recurse
           }
 
-          $outputDirectory = ${generatedDirectory}/interruption
+          $outputDirectory = "${generatedDirectory}/interruption"
           New-Item -Path /. -name ${outputDirectory} -ItemType "directory"
 
       - name: Cross train LU models
         shell: pwsh
         run: |
-          $sourceDirectory = $ENV:SourceDir
-          $outputDirectory = $ENV:SourceDir/generated/interruption
+          $sourceDirectory = "$($ENV.SourceDir)"
+          $outputDirectory = "$($ENV.SourceDir)/generated/interruption"
 
           bf luis:cross-train --in ${sourceDirectory} --out ${outputDirectory} --config ${sourceDirectory}/settings/cross-train.config.json --force
 
