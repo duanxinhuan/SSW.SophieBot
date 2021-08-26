@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 env:
-  SourceDir: "./src/SSW.SophieBot/SSWSophieBot"
+  SourceDir: "./src/SSW.SophieBot"
   BotName: ${{ secrets.BotName }}
   MicrosoftAppId: ${{ secrets.MICROSOFTAPPID }}
   MicrosoftAppPassword: ${{ secrets.MICROSOFTAPPPASSWORD }}
