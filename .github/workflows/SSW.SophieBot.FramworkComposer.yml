@@ -54,7 +54,7 @@ jobs:
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
     runs-on: ubuntu-latest
-    needs: setup
+    # needs: setup
     steps:
       - name: Prepare working folders
         shell: pwsh
