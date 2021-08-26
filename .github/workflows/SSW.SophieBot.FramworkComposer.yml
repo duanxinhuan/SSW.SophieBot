@@ -75,14 +75,13 @@ jobs:
           New-Item -Path /. -name ${env:outputDirectory} -ItemType "directory"
         
 
-      # - name: Cross train LU models
-      #   shell: pwsh
-      #   run: |
-      #     $sourceDirectory = "$($ENV.SourceDir)"
-      #     $outputDirectory = "$($ENV.SourceDir)/generated/interruption"
+      - name: Cross train LU models
+        shell: pwsh
+        env:
+          outputDirectory: ${{env.SourceDir}}/generated/interruption
+        run: |
+          bf luis:cross-train --in ${env:SourceDir} --out ${env:outputDirectory} --config ${env:SourceDir}/settings/cross-train.config.json --force
 
-      #     bf luis:cross-train --in ${sourceDirectory} --out ${outputDirectory} --config ${sourceDirectory}/settings/cross-train.config.json --force
-
-      #     # List generated files for checking purpose
-      #     cd ${outputDirectory}
-      #     ls -R
+          # List generated files for checking purpose
+          cd ${env:outputDirectory}
+          ls -R
