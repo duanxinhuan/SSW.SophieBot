@@ -14,7 +14,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 env:
-  SourceDir: "./src/SSW.SophieBot"
+  SourceDir: src/SSW.SophieBot/SSWSophieBot
   BotName: ${{ secrets.BotName }}
   MicrosoftAppId: ${{ secrets.MICROSOFTAPPID }}
   MicrosoftAppPassword: ${{ secrets.MICROSOFTAPPPASSWORD }}
@@ -30,26 +30,26 @@ env:
 
 jobs:
   # This workflow contains a single job called "build"
-  setup:
-    name: Set up tool sets 🛠
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  # setup:
+  #   name: Set up tool sets 🛠
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Set up Node 14
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
+  #     # Runs a single command using the runners shell
+  #     - name: Set up Node 14
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: "14"
 
-      - name: Set up Bot Framework CLI
-        run: |
-          npm install -g @microsoft/botframework-cli
+  #     - name: Set up Bot Framework CLI
+  #       run: |
+  #         npm install -g @microsoft/botframework-cli
 
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "3.1.x"
+  #     - name: Setup dotnet
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: "3.1.x"
 
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
@@ -58,9 +58,10 @@ jobs:
     steps:
       - name: Prepare working folders
         shell: pwsh
+        working-directory: ${{env.SourceDir}}
         env:
-          generatedDirectory: ${{env.SourceDir}}/generated
-          outputDirectory: ${{env.SourceDir}}/generated/interruption
+          generatedDirectory: generated
+          outputDirectory: generated/interruption
         run: |
           echo "generated dir is ${env:generatedDirectory}"
           echo "outputDirectory dir is ${env:outputDirectory}"
