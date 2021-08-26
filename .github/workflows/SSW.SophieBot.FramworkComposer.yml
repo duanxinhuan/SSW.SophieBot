@@ -59,7 +59,7 @@ jobs:
       - name: Prepare working folders
         shell: pwsh
         run: |
-          $generatedDirectory = $ENV:SourceDir/generated
+          $generatedDirectory = "$($ENV:SourceDir)/generated"
           
           # Clean and recreate the generated directory
           if (Test-Path ${generatedDirectory})
