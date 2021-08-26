@@ -13,7 +13,10 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  TestVariable: "hello world"
 jobs:
+ 
   # This workflow contains a single job called "build"
   build-stage:
     # The type of runner that the job will run on
@@ -44,3 +47,4 @@ jobs:
           node --version
           bf
           dotnet --version
+          echo "Test variable $TestVariable"
