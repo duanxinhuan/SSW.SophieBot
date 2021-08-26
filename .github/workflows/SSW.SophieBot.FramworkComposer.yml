@@ -30,13 +30,13 @@ env:
 
 jobs:
   # This workflow contains a single job called "build"
-  setup:
-    name: Set up tool sets 🛠
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  # setup:
+  #   name: Set up tool sets 🛠
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      # # Runs a single command using the runners shell
+  #     # # Runs a single command using the runners shell
       # - name: Set up Node 14
       #   uses: actions/setup-node@v2
       #   with:
@@ -56,12 +56,14 @@ jobs:
     runs-on: windows-latest
     needs: setup
     steps:
+      - uses: actions/checkout@v2
+
       - name: Prepare working folders
         shell: pwsh
         env:
           generatedDirectory: generated
           outputDirectory: generated/interruption
-        working-directory: ./src/SSW.SophieBot/SSWSophieBot
+        working-directory: src/SSW.SophieBot/SSWSophieBot
         run: |
           echo "generated dir is ${env:generatedDirectory}"
           echo "outputDirectory dir is ${env:outputDirectory}"
