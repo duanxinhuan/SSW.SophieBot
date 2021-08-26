@@ -54,7 +54,6 @@ jobs:
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
     runs-on: windows-latest
-    needs: setup
     steps:
       - uses: actions/checkout@v2
 
