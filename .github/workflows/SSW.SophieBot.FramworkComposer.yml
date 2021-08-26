@@ -66,12 +66,12 @@ jobs:
           echo "outputDirectory dir is ${env:outputDirectory}"
           
           # Clean and recreate the generated directory
-          if (Test-Path ${generatedDirectory})
+          if (Test-Path ${env:generatedDirectory})
           {
-            Remove-Item -Path ${generatedDirectory} -Force -Recurse
+            Remove-Item -Path ${env:generatedDirectory} -Force -Recurse
           }
 
-          New-Item -Path /. -name ${outputDirectory} -ItemType "directory"
+          New-Item -Path /. -name ${env:outputDirectory} -ItemType "directory"
         
 
       # - name: Cross train LU models
