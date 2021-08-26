@@ -30,37 +30,37 @@ env:
 
 jobs:
   # This workflow contains a single job called "build"
-  # setup:
-  #   name: Set up tool sets 🛠
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
+  setup:
+    name: Set up tool sets 🛠
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-  #     # Runs a single command using the runners shell
-  #     - name: Set up Node 14
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: "14"
+      # # Runs a single command using the runners shell
+      # - name: Set up Node 14
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: "14"
 
-  #     - name: Set up Bot Framework CLI
-  #       run: |
-  #         npm install -g @microsoft/botframework-cli
+      # - name: Set up Bot Framework CLI
+      #   run: |
+      #     npm install -g @microsoft/botframework-cli
 
-  #     - name: Setup dotnet
-  #       uses: actions/setup-dotnet@v1
-  #       with:
-  #         dotnet-version: "3.1.x"
+      # - name: Setup dotnet
+      #   uses: actions/setup-dotnet@v1
+      #   with:
+      #     dotnet-version: "3.1.x"
 
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
     runs-on: ubuntu-latest
-    # needs: setup
+    needs: setup
     steps:
       - name: Prepare working folders
         shell: pwsh
         env:
-          generatedDirectory: src/SSW.SophieBot/SSWSophieBot/generated
-          outputDirectory: src/SSW.SophieBot/SSWSophieBot/generated/interruption
+          generatedDirectory: ./src/SSW.SophieBot/SSWSophieBot/generated
+          outputDirectory: ./src/SSW.SophieBot/SSWSophieBot/generated/interruption
         run: |
           echo "generated dir is ${env:generatedDirectory}"
           echo "outputDirectory dir is ${env:outputDirectory}"
