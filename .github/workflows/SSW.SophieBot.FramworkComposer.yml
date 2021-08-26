@@ -59,8 +59,8 @@ jobs:
       - name: Prepare working folders
         shell: pwsh
         env:
-          generatedDirectory: ${{env.SourceDir)}}/generated
-          outputDirectory: ${{env.SourceDir)}}/generated/interruption
+          generatedDirectory: ${{env.SourceDir}}/generated
+          outputDirectory: ${{env.SourceDir}}/generated/interruption
         run: |
           echo "generated dir is ${generatedDirectory}"
           echo "outputDirectory dir is ${outputDirectory}"
