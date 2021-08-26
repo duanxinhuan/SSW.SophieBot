@@ -74,7 +74,7 @@ jobs:
             Remove-Item -Path ${env:generatedDirectory} -Force -Recurse
           }
 
-          New-Item -Path /. -name ${env:outputDirectory} -ItemType "directory"
+          New-Item -Path "${{env.SourceDir}}/generated" -name "interruption" -ItemType "directory"
         
 
       - name: Cross train LU models
