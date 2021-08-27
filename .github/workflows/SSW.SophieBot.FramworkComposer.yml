@@ -85,8 +85,8 @@ jobs:
       - name: Build and publish LUIS
         shell: pwsh
         working-directory: src/SSW.SophieBot/SSWSophieBot
-        run: |
-            ./.github/workflows/BUILD-LUIS.ps1 `
+        run: | 
+            .\BUILD-LUIS.ps1 `
             -outputDirectory ./generated `
             -sourceDirectory ./ `
             -crossTrainedLUDirectory ./generated/interruption `
