@@ -1,0 +1,9 @@
+[import](common.lg)
+
+# SendActivity_RXfqUl()
+[Activity
+    Text = ${SendActivity_RXfqUl_text()}
+]
+
+# SendActivity_RXfqUl_text()
+- Hello Patrick

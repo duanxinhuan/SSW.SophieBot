@@ -698,7 +698,7 @@
                 "GetProfile",
                 "GetSkills",
                 "GetPeopleBasedOnLocation",
-                "GetExpertsByLocation"
+                "GetSkilledPersonByLocation"
               ]
             }
           ]
@@ -867,40 +867,10 @@
     {
       "$kind": "Microsoft.OnIntent",
       "$designer": {
-        "id": "ypo1PI",
-        "name": "OnIntent (Goodbye)"
-      },
-      "intent": "Goodbye",
-      "actions": [
-        {
-          "$kind": "Microsoft.TraceActivity",
-          "$designer": {
-            "id": "HBvExO"
-          },
-          "name": "SSWSophieBot.OnIntent_Goodbye"
-        },
-        {
-          "$kind": "Microsoft.SendActivity",
-          "$designer": {
-            "id": "JcLjcy"
-          },
-          "activity": "${SendActivity_JcLjcy()}"
-        },
-        {
-          "$kind": "Microsoft.EndDialog",
-          "$designer": {
-            "id": "593gjl"
-          }
-        }
-      ]
-    },
-    {
-      "$kind": "Microsoft.OnIntent",
-      "$designer": {
         "id": "mBzfYS",
-        "name": "OnIntent (GetExpertsByLocation)"
+        "name": "OnIntent (GetSkilledPersonByLocation)"
       },
-      "intent": "GetExpertsByLocation",
+      "intent": "GetSkilledPersonByLocation",
       "entities": [],
       "actions": [
         {
@@ -921,7 +891,7 @@
           "$designer": {
             "id": "5ewWN6"
           },
-          "condition": "=contains($options.implemented, \"GetExpertsByLocation\")",
+          "condition": "=contains($options.implemented, \"GetSkilledPersonByLocation\")",
           "elseActions": [
             {
               "$kind": "Microsoft.SendActivity",
@@ -938,13 +908,31 @@
                 "id": "3AGO6Q"
               },
               "activityProcessed": true,
-              "dialog": "GetExpertsByLocationDialog",
               "options": {
                 "skillEntity": "=$options.skill",
                 "locationEntity": "=$options.location"
-              }
+              },
+              "dialog": "GetSkilledPersonByLocationDialog"
             }
           ]
+        }
+      ]
+    },
+    {
+      "$kind": "Microsoft.OnIntent",
+      "$designer": {
+        "id": "BlKPpt",
+        "name": "GetSkilledPersonByLocationDialog"
+      },
+      "intent": "GetSkilledPersonByLocationDialog",
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "7mBZRf"
+          },
+          "activityProcessed": true,
+          "dialog": "GetSkilledPersonByLocationDialog"
         }
       ]
     }

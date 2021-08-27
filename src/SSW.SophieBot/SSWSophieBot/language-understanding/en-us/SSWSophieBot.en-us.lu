@@ -569,7 +569,8 @@
 		- good bye
 		- you're very helpful
 
-# GetExpertsByLocation
+# GetSkilledPersonByLocationDialog
+
 - I need to talk to a {skill = DevOps} expert in {location = Melbourne}
 - I need to talk to an {skill = Angular} expert in {location = Sydney}
 - Who is the {skill = Chinafy} expert in {location = China}

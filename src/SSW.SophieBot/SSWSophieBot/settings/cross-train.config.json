@@ -38,9 +38,8 @@
       "GetPeopleBasedOnLocation": [
         "GetPeopleBasedOnLocationDialog.en-us"
       ],
-      "Goodbye": "",
-      "GetExpertsByLocation": [
-        "GetExpertsByLocationDialog.en-us"
+      "GetSkilledPersonByLocationDialog": [
+        "GetSkilledPersonByLocationDialog.en-us"
       ]
     }
   },

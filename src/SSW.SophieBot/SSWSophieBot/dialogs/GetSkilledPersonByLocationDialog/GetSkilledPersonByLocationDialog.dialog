@@ -1,0 +1,32 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "o7ywHY",
+    "name": "GetSkilledPersonByLocationDialog",
+    "description": "Example: Who knows Angular at Melbourne?"
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "M2kLWh"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "RXfqUl"
+          },
+          "activity": "${SendActivity_RXfqUl()}"
+        }
+      ]
+    }
+  ],
+  "generator": "GetSkilledPersonByLocationDialog.lg",
+  "recognizer": "GetSkilledPersonByLocationDialog.lu.qna",
+  "id": "GetSkilledPersonByLocationDialog"
+}
