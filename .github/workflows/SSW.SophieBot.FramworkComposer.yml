@@ -37,17 +37,15 @@ jobs:
   #     - uses: actions/checkout@v2
 
   #     # # Runs a single command using the runners shell
-      # - name: Set up Node 14
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: "14"
+  # - name: Set up Node 14
+  #   uses: actions/setup-node@v2
+  #   with:
+  #     node-version: "14"
 
-     
-
-      # - name: Setup dotnet
-      #   uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: "3.1.x"
+  # - name: Setup dotnet
+  #   uses: actions/setup-dotnet@v1
+  #   with:
+  #     dotnet-version: "3.1.x"
 
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
@@ -56,26 +54,22 @@ jobs:
       - name: Set up Bot Framework CLI 🔨
         run: |
           npm install -g @microsoft/botframework-cli
-      
+
       - uses: actions/checkout@v2
 
       - name: Prepare working folders
         shell: pwsh
         env:
           generatedDirectory: ${{env.SourceDir}}/generated
-          outputDirectory: ${{env.SourceDir}}/generated/interruption
         run: |
-          echo "generated dir is ${env:generatedDirectory}"
-          echo "outputDirectory dir is ${env:outputDirectory}"
-          
           # Clean and recreate the generated directory
           if (Test-Path ${env:generatedDirectory})
           {
             Remove-Item -Path ${env:generatedDirectory} -Force -Recurse
           }
 
-          New-Item -Path "${{env.SourceDir}}/generated" -name "interruption" -ItemType "directory"
-        
+          # Create interruption folder
+          New-Item -Path "${{env.generatedDirectory}}" -name "interruption" -ItemType "directory"
 
       - name: Cross train LU models
         shell: pwsh
@@ -87,3 +81,16 @@ jobs:
           # List generated files for checking purpose
           cd ${env:outputDirectory}
           ls -R
+
+      - name: Build and publish LUIS
+        shell: pwsh
+        working-directory: src/SSW.SophieBot/SSWSophieBot
+        run: |
+          .github/workflows/BUILD-LUIS.ps1 `
+            -outputDirectory ./generated `
+            -sourceDirectory ./ `
+            -crossTrainedLUDirectory ./generated/interruption `
+            -authoringKey ${{ env.LuisAuthoringKey }} `
+            -botName ${{ env.BotName }} `
+            -luisEndPoint ${{env.LuisEndpoint}}`
+            -region ${{env.LuisAuthoringRegion}}`
