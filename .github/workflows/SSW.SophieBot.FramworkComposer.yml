@@ -49,7 +49,7 @@ jobs:
 
   build-and-deploy-luis:
     name: Build and Deploy LUIS models
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Set up Bot Framework CLI 🔨
         run: |
@@ -86,7 +86,7 @@ jobs:
         shell: pwsh
         working-directory: src/SSW.SophieBot/SSWSophieBot
         run: |
-          .github/workflows/BUILD-LUIS.ps1 `
+            ./.github/workflows/BUILD-LUIS.ps1 `
             -outputDirectory ./generated `
             -sourceDirectory ./ `
             -crossTrainedLUDirectory ./generated/interruption `
