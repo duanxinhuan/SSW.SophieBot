@@ -226,7 +226,7 @@ namespace SSWSophieBot.HttpClientComponents.PersonQuery
 
         public static bool IsOnClientWorkFunc(GetAppointmentModel appointment)
         {
-            return !_internalCompanyNames.Contains(appointment.Regarding.ToLower());
+            return !_internalCompanyNames.Contains(appointment.Regarding?.ToLower());
         }
 
         public static bool IsOnInternalWorkFunc(GetAppointmentModel appointment)

@@ -315,10 +315,7 @@ We love squashing bugs 🥰```
 ]
 
 # SendActivity_Ql6zUr_text()
-- ```Sorry, I could not answer that 😭 <br/>
-See sample questions ${settings.App.ProductUrl} <br/> <br/>
-${IntranetInfo()}
-```
+- ```Sorry, I could not answer that 😭```
 
 # IntranetInfo()
 - IF: ${exists(user.TenantAuthenticated) && user.TenantAuthenticated == true}
