@@ -63,10 +63,10 @@
           "employeesProperty": "turn.employees",
           "reasonPhraseProperty": "turn.reasonPhrase",
           "queryString": [
-            {
-              "key": "firstName",
-              "value": "=dialog.nameEntity.firstname[0]"
-            },
+						{
+							"key": "$filter",
+							"value": "=\"ssw_firstname eq '\" + dialog.nameEntity.firstname[0] + \"'\""
+						},
             {
               "value": "=dialog.nameEntity.lastname[0]",
               "key": "lastName"

@@ -2,11 +2,12 @@
 using Microsoft.Bot.Builder.Dialogs;
 using Newtonsoft.Json;
 using SSW.SophieBot.Components;
-using SSW.SophieBot.HttpClientAction.Models;
 using SSW.SophieBot.HttpClientComponents.Abstractions;
 using SSW.SophieBot.HttpClientComponents.PersonQuery.Clients;
+using SSW.SophieBot.HttpClientComponents.PersonQuery.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -54,12 +55,13 @@ namespace SSW.SophieBot.HttpClientComponents.PersonQuery.Actions
 
             if (EmployeesProperty != null)
             {
-                var employees = await httpClient.GetContentAsync<List<GetEmployeeModel>>(responseMessage);
+                var powerAppsEmployees = await httpClient.GetContentAsync<GetPowerAppsEmployeeModel>(responseMessage);
+                var employees = powerAppsEmployees.ToEmployeeModels();
 
-                if (avatarManager != null)
-                {
-                    employees = await avatarManager.GetAvatarUrlsAsync(employees);
-                }
+                //if (avatarManager != null)
+                //{
+                //    employees = await avatarManager.GetAvatarUrlsAsync(employees);
+                //}
 
                 dc.State.SetValue(dc.GetValue(EmployeesProperty), employees);
             }
