@@ -583,6 +583,9 @@
 - let me know when Adam's booked
 
 # GetCalendar
+- ^who {@presentBe} {@contact}['s] booked [for][?]
+- ^who is {@contact={@firstName=adam}}'s booked for?
+- ^which client {@presentBe} {@contact} booked [for][?]
 - show {@contact={@firstName=adam}}'s {@profileProperty={@calendarProperty=calendar}}
 - show {@contact={@firstName=json}}'s {@profileProperty={@calendarProperty=bookings}}
 - show {@contact={@firstName=json}}'s {@profileProperty={@calendarProperty=next booking}}
@@ -668,11 +671,14 @@
 # GetEmployeeProjects
 - ^{@contact}['s] projects^
 - what {@presentBe} {@contact} (working on|doing|booked on)[?]
+- ^who {@presentBe} {@contact} working for[?]
+- which client {@presentBe} {@contact} working for[?]
 - what are {@contact={@firstName=piers}}'s {@profileProperty={@projectProperty=projects}}?
 - give me all projects from {@contact={@firstName=jack}}
 - show me {@contact={@firstName=michael}}'s {@profileProperty={@projectProperty=projects}}
 - what's {@contact={@firstName=jim}}'s {@profileProperty={@projectProperty=project}}?
 - list {@contact={firstName=ravi}}'s recent {@profileProperty={@projectProperty=projects}}
+- who is {@contact={@firstName=calum}} working for[?]
 
 @ phraselist EmployeeProjectsPhraseList(interchangeable) disabledForAllModels =
 	- projects
